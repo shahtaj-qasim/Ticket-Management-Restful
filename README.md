@@ -1,4 +1,4 @@
-# Ticket Management System Using Rest API
+# Introduction to Distributed Systems - Assignment Template
 
 ## General Information
 

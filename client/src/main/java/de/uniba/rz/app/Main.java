@@ -73,7 +73,7 @@ public class Main {
 			// Default case for unknown implementations
 			default:
 				System.out.println("Unknown backend type. Using local backend implementation.");
-				return new LocalTicketManagementBackend();
+				return new RestTicketManagement();
 			}
 
 		}
