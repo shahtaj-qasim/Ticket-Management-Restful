@@ -6,12 +6,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.naming.NamingException;
 
 public class TicketServerMain {
 
 	public static void main(String[] args) throws IOException, NamingException {
-		TicketStore simpleTestStore = new SimpleTicketStore();
+		TicketStore simpleTestStore = new RestTicketStore();
 
 		List<RemoteAccess> remoteAccessImplementations = getAvailableRemoteAccessImplementations(args);
 
@@ -39,7 +40,7 @@ public class TicketServerMain {
 		
 		// TODO Add your implementations of the RemoteAccess interface
 		// e.g.:
-		// implementations.add(new UdpRemoteAccess(args[0], args[1]));
+		 implementations.add(new RestRemoteAccess());
 
 		return implementations;
 	}

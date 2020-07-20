@@ -53,6 +53,9 @@ allprojects {
  		compile 'org.glassfish.jersey.core:jersey-common:2.30.1'
         compile 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.3'
         compile 'org.glassfish.jaxb:jaxb-runtime:2.3.3'
+		compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version: '2.31'
+
+
         // for grpc
 		compile 'io.grpc:grpc-netty-shaded:1.20.0'
 	    compile 'io.grpc:grpc-protobuf:1.20.0'
@@ -76,6 +79,7 @@ project(':client') {
 			)
 		}
 	}
+
 }
 
 project(':server') {
@@ -90,6 +94,7 @@ project(':server') {
 			)
 		}
 	}
+
 }
 
 apply plugin: 'eclipse'

@@ -59,7 +59,7 @@ public class Main {
 	private static TicketManagementBackend evaluateArgs(String[] args) {
 		if (args == null || args.length == 0) {
 			System.out.println("No arguments passed. Using local backend implemenation.");
-			return new LocalTicketManagementBackend();
+			return new RestTicketManagement();
 		} else {
 			switch (args[0]) {
 			case "local":

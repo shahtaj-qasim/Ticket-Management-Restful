@@ -1,11 +1,13 @@
 package de.uniba.rz.entities;
 
+
 import java.io.Serializable;
 
 /**
  * used Ticket Representation.
  * 
  */
+
 public class Ticket implements Serializable {
 
 	private static final long serialVersionUID = -6979364632920616224L;
@@ -18,8 +20,8 @@ public class Ticket implements Serializable {
 	private Priority priority;
 	private Status status;
 
-	public Ticket() {}
-	
+	public Ticket(){}
+
 	public Ticket(int id, String reporter, String topic, String description, Type type, Priority priority) {
 		super();
 		this.id = id;
@@ -43,6 +45,27 @@ public class Ticket implements Serializable {
 		this.status = status;
 	}
 
+	public Ticket(Ticket ticket) {
+		this.id = ticket.getId();
+		this.reporter = ticket.getReporter();
+		this.topic = ticket.getTopic();
+		this.description = ticket.getDescription();
+		this.type = ticket.getType();
+		this.priority = ticket.getPriority();
+		this.status = ticket.getStatus();
+	}
+
+	public Ticket MapToTicket(){
+		Ticket ticket= new Ticket();
+		ticket.setId(this.id);
+		ticket.setReporter(this.reporter);
+		ticket.setTopic(this.topic);
+		ticket.setDescription(this.description);
+		ticket.setType(this.type);
+		ticket.setPriority(this.priority);
+		ticket.setStatus(this.status);
+		return ticket;
+	}
 	public int getId() {
 		return id;
 	}

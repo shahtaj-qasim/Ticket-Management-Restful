@@ -1,5 +1,7 @@
 package de.uniba.rz.backend;
 
+import java.io.IOException;
+
 /**
  * Basic interface to enable remote access to the {@link TicketStore} managing the tickets internally
  *
@@ -12,7 +14,7 @@ public interface RemoteAccess extends Runnable {
 	 * @param ticketStore
 	 * reference to the {@link TicketStore} which is used by the application
 	 */
-    void prepareStartup(TicketStore ticketStore);
+    void prepareStartup(TicketStore ticketStore) throws IOException;
 
     /**
      * Triggers the graceful shutdown of the system.
