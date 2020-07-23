@@ -15,6 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 
@@ -22,6 +24,8 @@ import java.util.logging.Logger;
 @Singleton
 public class TicketController {
     private final static Logger logger = Logger.getLogger(TicketController.class.getName());
+
+    private static TicketService ticketServiceInstance= TicketService.getInstance();
 
 
 
@@ -39,8 +43,7 @@ public class TicketController {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
         Ticket mapTicket= newTicket.MapToTicket();
-        //TicketService ts= new TicketService();
-        Ticket ticket= TicketService.getInstance().storeNewTicket(mapTicket);
+        Ticket ticket= ticketServiceInstance.storeNewTicket(mapTicket);
 
         return Response
                 .status(Response.Status.OK)
@@ -60,13 +63,12 @@ public class TicketController {
             throw new WebApplicationException("Invalid request body",Response.Status.BAD_REQUEST); //400 status code
         }
         Ticket mapTicket= ticket.MapToTicket();
-        //TicketService ts= new TicketService();
-        Ticket gotTicket= TicketService.getInstance().getTicketbyId(id);
+        Ticket gotTicket= ticketServiceInstance.getTicketbyId(id);
         if(gotTicket == null){
             logger.warning("Ticket not found with ID: " + id+ "    "+ Response.Status.NOT_FOUND);
             throw new WebApplicationException("Ticket not found with ID: " + id, 404);
         }
-        Ticket updatedTicket = TicketService.getInstance().updateTicket(mapTicket,gotTicket);
+        Ticket updatedTicket = ticketServiceInstance.updateTicket(mapTicket,gotTicket);
         System.out.println("Updated:  " +updatedTicket);
         return Response.status(Response.Status.OK)
                 .entity(new Ticket(updatedTicket))
@@ -77,11 +79,11 @@ public class TicketController {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTickets(){
-        //TicketService ts= new TicketService();
-        if(TicketService.getInstance().getAllTickets().isEmpty()){
+        HashMap<Integer, Ticket> getAll = ticketServiceInstance.getAllTickets();
+        if(getAll.isEmpty()){
             logger.info("Currently no tickets exist, please create a ticket  "+Response.Status.NOT_FOUND);
         }
-        String allTicks=TicketService.getInstance().getAllTickets().toString();
+        String allTicks=getAll.toString();
         System.out.println("All tickets:  "+allTicks);
         return Response
                 .status(Response.Status.OK)
@@ -92,25 +94,36 @@ public class TicketController {
 
     @GET
     @Path("/searchname")
-    public String getTicketsByName(@DefaultValue("Harry") @QueryParam("name") String name){
-        //TicketService ts= new TicketService();
-        if(TicketService.getInstance().getTicketsByName(name).isEmpty()){
+    public String getTicketsByName(@DefaultValue("Harry") @QueryParam("name") String name,
+                                   @DefaultValue("1") @QueryParam("offset") int offset,
+                                   @DefaultValue("1") @QueryParam("limit") int limit){
+        if(offset < 0 || limit < 0 ){
+            throw new WebApplicationException("Offset or/and limit not found", 404);
+        }
+        List<Map.Entry<Integer,Ticket>> getTickets= ticketServiceInstance.getTicketsByName(name, offset, limit);
+        if(getTickets.isEmpty()){
             logger.warning("Searched ticket not found  "+Response.Status.NOT_FOUND);
             throw new WebApplicationException("Searched ticket not found ", 404);
         }
-        return TicketService.getInstance().getTicketsByName(name).toString();
+        return getTickets.toString();
 
     }
 
     @GET
     @Path("/searchtype")
-    public String getTicketsByType(@DefaultValue("TASK") @QueryParam("type") Type type){
-        //TicketService ts= new TicketService();
-        if(TicketService.getInstance().getTicketsByType(type).isEmpty()){
+    public String getTicketsByType(@DefaultValue("TASK") @QueryParam("type") Type type,
+                                   @DefaultValue("1") @QueryParam("offset") int offset,
+                                   @DefaultValue("1") @QueryParam("limit") int limit){
+
+        if(offset < 0 || limit < 0 ){
+            throw new WebApplicationException("Offset or/and limit not found", 404);
+        }
+        List<Map.Entry<Integer,Ticket>> getTickets= ticketServiceInstance.getTicketsByType(type, offset, limit);
+        if(getTickets.isEmpty()){
             logger.warning("Searched ticket not found  "+Response.Status.NOT_FOUND);
             throw new WebApplicationException("Searched ticket not found ", 404);
         }
-        return TicketService.getInstance().getTicketsByType(type).toString();
+        return getTickets.toString();
 
 
     }

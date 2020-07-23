@@ -378,6 +378,18 @@ public class MainFrame extends JFrame implements Observer {
 		JPanel searchPanel = new JPanel();
 		searchPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
+		//offset field
+		searchPanel.add(new JLabel("Page:"));
+		JTextField offsetField = new JTextField();
+		offsetField.setColumns(15);
+		searchPanel.add(offsetField);
+
+		//limit field
+		searchPanel.add(new JLabel("# of tickets:"));
+		JTextField limitField = new JTextField();
+		limitField.setColumns(15);
+		searchPanel.add(limitField);
+
 		searchPanel.add(new JLabel("Search:"));
 		JTextField searchField = new JTextField();
 		searchField.setColumns(15);
@@ -393,7 +405,8 @@ public class MainFrame extends JFrame implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				de.uniba.rz.entities.Type type = (de.uniba.rz.entities.Type) typeBox.getSelectedItem();
-				controller.searchTicket(searchField.getText(), (de.uniba.rz.entities.Type) typeBox.getSelectedItem());
+				controller.searchTicket(searchField.getText(), (de.uniba.rz.entities.Type) typeBox.getSelectedItem(),
+						offsetField.getText(), limitField.getText());
 			}
 		});
 		searchPanel.add(searchButton);

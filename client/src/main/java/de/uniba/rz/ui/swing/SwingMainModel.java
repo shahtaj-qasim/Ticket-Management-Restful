@@ -58,12 +58,12 @@ public class SwingMainModel extends Observable {
 	notifyObservers();
     }
     
-    public List<Ticket> searchTicket(String name, Type type) throws TicketException {
+    public List<Ticket> searchTicket(String name, Type type, int offset, int limit) throws TicketException {
 		try {
 			if (type == null) {
-				return backend.getTicketsByName(name);
+				return backend.getTicketsByName(name, offset, limit);
 			} else {
-				return backend.getTicketsByNameAndType(name, type);
+				return backend.getTicketsByNameAndType(name, type, offset, limit);
 			}
 		} catch (UnsupportedOperationException e) {
 			throw new TicketException("No search service registered");

@@ -7,6 +7,7 @@ import de.uniba.rz.entities.Priority;
 import de.uniba.rz.entities.Ticket;
 import de.uniba.rz.entities.TicketException;
 import de.uniba.rz.entities.Type;
+import org.eclipse.persistence.annotations.Convert;
 
 public class SwingMainController {
 
@@ -83,9 +84,11 @@ public class SwingMainController {
 		}
 	}
 	
-	public void searchTicket(String name, Type type) {
+	public void searchTicket(String name, Type type, String offset, String limit) {
 		try {
-			List<Ticket> tickets = model.searchTicket(name, type);
+			int offsetInt= Integer.parseInt(offset);
+			int limitInt = Integer.parseInt(limit);
+			List<Ticket> tickets = model.searchTicket(name, type, offsetInt, limitInt);
 			mainFrame.updateTable(tickets);
 		} catch (TicketException e) {
 			mainFrame.showErrorDialog("Could not perform ticket search", e);

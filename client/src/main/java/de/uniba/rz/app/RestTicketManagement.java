@@ -44,9 +44,6 @@ public class RestTicketManagement implements TicketManagementBackend, TicketSear
 
     @Override
     public List<Ticket> getAllTickets() throws TicketException {
-
-        //List<Ticket> list = new ArrayList<Ticket>(TicketService.tickets.values());
-
         Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target("http://localhost:9999/tickets").path("all");
         Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
@@ -62,7 +59,7 @@ public class RestTicketManagement implements TicketManagementBackend, TicketSear
 
     @Override
     public Ticket getTicketById(int id) throws TicketException {
-        //TicketService t= new TicketService();
+
         Ticket ticket=TicketService.getInstance().getTicketbyId(id);
         return ticket;
 
@@ -129,9 +126,10 @@ public class RestTicketManagement implements TicketManagementBackend, TicketSear
 
     //search implementation
     @Override
-    public List<Ticket> getTicketsByName(String name) throws TicketException {
+    public List<Ticket> getTicketsByName(String name, int offset, int limit) throws TicketException {
         Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target("http://localhost:9999/tickets").path("searchname").queryParam("name",name);
+        WebTarget webTarget = client.target("http://localhost:9999/tickets").path("searchname").queryParam("name",name)
+                .queryParam("offset",offset).queryParam("limit",limit);
         Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
         String response = invocationBuilder.get(String.class);
 
@@ -142,9 +140,10 @@ public class RestTicketManagement implements TicketManagementBackend, TicketSear
     }
 
     @Override
-    public List<Ticket> getTicketsByNameAndType(String name, Type type) throws TicketException {
+    public List<Ticket> getTicketsByNameAndType(String name, Type type, int offset, int limit) throws TicketException {
         Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target("http://localhost:9999/tickets").path("searchtype").queryParam("type",type);
+        WebTarget webTarget = client.target("http://localhost:9999/tickets").path("searchtype")
+                .queryParam("type",type).queryParam("offset",offset).queryParam("limit",limit);
         Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
         String response = invocationBuilder.get(String.class);
 

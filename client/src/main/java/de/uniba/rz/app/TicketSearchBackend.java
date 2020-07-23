@@ -17,7 +17,7 @@ public interface TicketSearchBackend {
 	 * @return a list of {@link Ticket} that fulfill the requested attributes
 	 * @throws TicketException if something failed
 	 */
-	default List<Ticket> getTicketsByName(String name) throws TicketException {
+	default List<Ticket> getTicketsByName(String name, int offset, int limit) throws TicketException {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 	
@@ -29,7 +29,7 @@ public interface TicketSearchBackend {
 	 * @return a list of {@link Ticket} that fulfill the requested attributes
 	 * @throws TicketException if something failed
 	 */
-	default List<Ticket> getTicketsByNameAndType(String name, Type type) throws TicketException {
+	default List<Ticket> getTicketsByNameAndType(String name, Type type, int offset, int limit) throws TicketException {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 }
