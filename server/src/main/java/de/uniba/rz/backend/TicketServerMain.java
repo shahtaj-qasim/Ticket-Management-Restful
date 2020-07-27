@@ -10,15 +10,21 @@ import java.util.List;
 import javax.naming.NamingException;
 
 public class TicketServerMain {
-
+	static TicketStore  simpleStore;
 	public static void main(String[] args) throws IOException, NamingException {
-		TicketStore simpleTestStore = new RestTicketStore();
+
+		switch (args[0]) {
+			case "rest":
+				simpleStore = new RestTicketStore();
+			case "grpc":
+				simpleStore = new grpcTicketStore();
+		}
 
 		List<RemoteAccess> remoteAccessImplementations = getAvailableRemoteAccessImplementations(args);
 
 		// Starting remote access implementations:
 		for (RemoteAccess implementation : remoteAccessImplementations) {
-			implementation.prepareStartup(simpleTestStore);
+			implementation.prepareStartup(simpleStore);
 			new Thread(implementation).start();
 		}
 
@@ -27,7 +33,7 @@ public class TicketServerMain {
 			shutdownReader.readLine();
 			System.out.println("Shutting down...");
 	
-			// Shuttung down all remote access implementations
+			// Shutting down all remote access implementations
 			for (RemoteAccess implementation : remoteAccessImplementations) {
 				implementation.shutdown();
 			}
@@ -37,10 +43,12 @@ public class TicketServerMain {
 
 	private static List<RemoteAccess> getAvailableRemoteAccessImplementations(String[] args) {
 		List<RemoteAccess> implementations = new ArrayList<>();
-		
-		// TODO Add your implementations of the RemoteAccess interface
-		// e.g.:
-		 implementations.add(new RestRemoteAccess());
+		switch (args[0]) {
+			case "rest":
+				implementations.add(new RestRemoteAccess());
+			case "grpc":
+				implementations.add(new grpcRemoteAccess(Integer.parseInt(args[2])));
+		}
 
 		return implementations;
 	}
