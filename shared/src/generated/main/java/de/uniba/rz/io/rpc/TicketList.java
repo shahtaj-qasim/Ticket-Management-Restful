@@ -4,19 +4,19 @@
 package de.uniba.rz.io.rpc;
 
 /**
- * Protobuf type {@code HelloResponse}
+ * Protobuf type {@code TicketList}
  */
-public  final class HelloResponse extends
+public  final class TicketList extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:HelloResponse)
-    HelloResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:TicketList)
+    TicketListOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use HelloResponse.newBuilder() to construct.
-  private HelloResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TicketList.newBuilder() to construct.
+  private TicketList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private HelloResponse() {
-    ciao_ = "";
+  private TicketList() {
+    allTickets_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private HelloResponse(
+  private TicketList(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -44,9 +44,8 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            ciao_ = s;
+            allTickets_ = input.readBytes();
             break;
           }
           default: {
@@ -70,49 +69,24 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return de.uniba.rz.io.rpc.TicketManagement.internal_static_HelloResponse_descriptor;
+    return de.uniba.rz.io.rpc.TicketManagement.internal_static_TicketList_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return de.uniba.rz.io.rpc.TicketManagement.internal_static_HelloResponse_fieldAccessorTable
+    return de.uniba.rz.io.rpc.TicketManagement.internal_static_TicketList_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            de.uniba.rz.io.rpc.HelloResponse.class, de.uniba.rz.io.rpc.HelloResponse.Builder.class);
+            de.uniba.rz.io.rpc.TicketList.class, de.uniba.rz.io.rpc.TicketList.Builder.class);
   }
 
-  public static final int CIAO_FIELD_NUMBER = 1;
-  private volatile java.lang.Object ciao_;
+  public static final int ALLTICKETS_FIELD_NUMBER = 1;
+  private com.google.protobuf.ByteString allTickets_;
   /**
-   * <code>string ciao = 1;</code>
+   * <code>bytes allTickets = 1;</code>
    */
-  public java.lang.String getCiao() {
-    java.lang.Object ref = ciao_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      ciao_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string ciao = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCiaoBytes() {
-    java.lang.Object ref = ciao_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      ciao_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.google.protobuf.ByteString getAllTickets() {
+    return allTickets_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -129,8 +103,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getCiaoBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ciao_);
+    if (!allTickets_.isEmpty()) {
+      output.writeBytes(1, allTickets_);
     }
     unknownFields.writeTo(output);
   }
@@ -141,8 +115,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getCiaoBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ciao_);
+    if (!allTickets_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(1, allTickets_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -154,13 +129,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof de.uniba.rz.io.rpc.HelloResponse)) {
+    if (!(obj instanceof de.uniba.rz.io.rpc.TicketList)) {
       return super.equals(obj);
     }
-    de.uniba.rz.io.rpc.HelloResponse other = (de.uniba.rz.io.rpc.HelloResponse) obj;
+    de.uniba.rz.io.rpc.TicketList other = (de.uniba.rz.io.rpc.TicketList) obj;
 
-    if (!getCiao()
-        .equals(other.getCiao())) return false;
+    if (!getAllTickets()
+        .equals(other.getAllTickets())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -172,76 +147,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CIAO_FIELD_NUMBER;
-    hash = (53 * hash) + getCiao().hashCode();
+    hash = (37 * hash) + ALLTICKETS_FIELD_NUMBER;
+    hash = (53 * hash) + getAllTickets().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(byte[] data)
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(java.io.InputStream input)
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseDelimitedFrom(java.io.InputStream input)
+  public static de.uniba.rz.io.rpc.TicketList parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseDelimitedFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static de.uniba.rz.io.rpc.HelloResponse parseFrom(
+  public static de.uniba.rz.io.rpc.TicketList parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,7 +229,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(de.uniba.rz.io.rpc.HelloResponse prototype) {
+  public static Builder newBuilder(de.uniba.rz.io.rpc.TicketList prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -270,26 +245,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code HelloResponse}
+   * Protobuf type {@code TicketList}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:HelloResponse)
-      de.uniba.rz.io.rpc.HelloResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:TicketList)
+      de.uniba.rz.io.rpc.TicketListOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return de.uniba.rz.io.rpc.TicketManagement.internal_static_HelloResponse_descriptor;
+      return de.uniba.rz.io.rpc.TicketManagement.internal_static_TicketList_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return de.uniba.rz.io.rpc.TicketManagement.internal_static_HelloResponse_fieldAccessorTable
+      return de.uniba.rz.io.rpc.TicketManagement.internal_static_TicketList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              de.uniba.rz.io.rpc.HelloResponse.class, de.uniba.rz.io.rpc.HelloResponse.Builder.class);
+              de.uniba.rz.io.rpc.TicketList.class, de.uniba.rz.io.rpc.TicketList.Builder.class);
     }
 
-    // Construct using de.uniba.rz.io.rpc.HelloResponse.newBuilder()
+    // Construct using de.uniba.rz.io.rpc.TicketList.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -307,7 +282,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      ciao_ = "";
+      allTickets_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
     }
@@ -315,17 +290,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return de.uniba.rz.io.rpc.TicketManagement.internal_static_HelloResponse_descriptor;
+      return de.uniba.rz.io.rpc.TicketManagement.internal_static_TicketList_descriptor;
     }
 
     @java.lang.Override
-    public de.uniba.rz.io.rpc.HelloResponse getDefaultInstanceForType() {
-      return de.uniba.rz.io.rpc.HelloResponse.getDefaultInstance();
+    public de.uniba.rz.io.rpc.TicketList getDefaultInstanceForType() {
+      return de.uniba.rz.io.rpc.TicketList.getDefaultInstance();
     }
 
     @java.lang.Override
-    public de.uniba.rz.io.rpc.HelloResponse build() {
-      de.uniba.rz.io.rpc.HelloResponse result = buildPartial();
+    public de.uniba.rz.io.rpc.TicketList build() {
+      de.uniba.rz.io.rpc.TicketList result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -333,9 +308,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public de.uniba.rz.io.rpc.HelloResponse buildPartial() {
-      de.uniba.rz.io.rpc.HelloResponse result = new de.uniba.rz.io.rpc.HelloResponse(this);
-      result.ciao_ = ciao_;
+    public de.uniba.rz.io.rpc.TicketList buildPartial() {
+      de.uniba.rz.io.rpc.TicketList result = new de.uniba.rz.io.rpc.TicketList(this);
+      result.allTickets_ = allTickets_;
       onBuilt();
       return result;
     }
@@ -374,19 +349,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof de.uniba.rz.io.rpc.HelloResponse) {
-        return mergeFrom((de.uniba.rz.io.rpc.HelloResponse)other);
+      if (other instanceof de.uniba.rz.io.rpc.TicketList) {
+        return mergeFrom((de.uniba.rz.io.rpc.TicketList)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(de.uniba.rz.io.rpc.HelloResponse other) {
-      if (other == de.uniba.rz.io.rpc.HelloResponse.getDefaultInstance()) return this;
-      if (!other.getCiao().isEmpty()) {
-        ciao_ = other.ciao_;
-        onChanged();
+    public Builder mergeFrom(de.uniba.rz.io.rpc.TicketList other) {
+      if (other == de.uniba.rz.io.rpc.TicketList.getDefaultInstance()) return this;
+      if (other.getAllTickets() != com.google.protobuf.ByteString.EMPTY) {
+        setAllTickets(other.getAllTickets());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -403,11 +377,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      de.uniba.rz.io.rpc.HelloResponse parsedMessage = null;
+      de.uniba.rz.io.rpc.TicketList parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (de.uniba.rz.io.rpc.HelloResponse) e.getUnfinishedMessage();
+        parsedMessage = (de.uniba.rz.io.rpc.TicketList) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -417,71 +391,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object ciao_ = "";
+    private com.google.protobuf.ByteString allTickets_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string ciao = 1;</code>
+     * <code>bytes allTickets = 1;</code>
      */
-    public java.lang.String getCiao() {
-      java.lang.Object ref = ciao_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ciao_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public com.google.protobuf.ByteString getAllTickets() {
+      return allTickets_;
     }
     /**
-     * <code>string ciao = 1;</code>
+     * <code>bytes allTickets = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getCiaoBytes() {
-      java.lang.Object ref = ciao_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ciao_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string ciao = 1;</code>
-     */
-    public Builder setCiao(
-        java.lang.String value) {
+    public Builder setAllTickets(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      ciao_ = value;
+      allTickets_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string ciao = 1;</code>
+     * <code>bytes allTickets = 1;</code>
      */
-    public Builder clearCiao() {
+    public Builder clearAllTickets() {
       
-      ciao_ = getDefaultInstance().getCiao();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string ciao = 1;</code>
-     */
-    public Builder setCiaoBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      ciao_ = value;
+      allTickets_ = getDefaultInstance().getAllTickets();
       onChanged();
       return this;
     }
@@ -498,41 +432,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:HelloResponse)
+    // @@protoc_insertion_point(builder_scope:TicketList)
   }
 
-  // @@protoc_insertion_point(class_scope:HelloResponse)
-  private static final de.uniba.rz.io.rpc.HelloResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:TicketList)
+  private static final de.uniba.rz.io.rpc.TicketList DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new de.uniba.rz.io.rpc.HelloResponse();
+    DEFAULT_INSTANCE = new de.uniba.rz.io.rpc.TicketList();
   }
 
-  public static de.uniba.rz.io.rpc.HelloResponse getDefaultInstance() {
+  public static de.uniba.rz.io.rpc.TicketList getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<HelloResponse>
-      PARSER = new com.google.protobuf.AbstractParser<HelloResponse>() {
+  private static final com.google.protobuf.Parser<TicketList>
+      PARSER = new com.google.protobuf.AbstractParser<TicketList>() {
     @java.lang.Override
-    public HelloResponse parsePartialFrom(
+    public TicketList parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new HelloResponse(input, extensionRegistry);
+      return new TicketList(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<HelloResponse> parser() {
+  public static com.google.protobuf.Parser<TicketList> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<HelloResponse> getParserForType() {
+  public com.google.protobuf.Parser<TicketList> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public de.uniba.rz.io.rpc.HelloResponse getDefaultInstanceForType() {
+  public de.uniba.rz.io.rpc.TicketList getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

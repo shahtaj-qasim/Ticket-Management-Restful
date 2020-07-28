@@ -9,6 +9,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.min;
+
 
 public class TicketService {
 
@@ -93,6 +95,7 @@ public class TicketService {
         }
         System.out.println("Searched tickets (with type: "+type+"): "+matchedEntry.subList(offset,offset+limit).toString());
         return matchedEntry.subList(offset,offset+limit);
+
 
     }
 

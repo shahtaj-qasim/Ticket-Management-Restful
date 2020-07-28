@@ -125,7 +125,7 @@ public class Ticket implements Serializable {
 	@Override
 	public String toString() {
 		return "Ticket #" + id + ": " + topic + " (reported by: " + reporter + ")\n" + "Status: " + status + "\t Type:"
-				+ type + "\t Priority: " + priority + "\n" + "Description:\n" + description;
+				+ type + "\t Priority: " + priority + "\n" + "Description:" + description + "\n";
 	}
 
 	@Override

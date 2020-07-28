@@ -24,6 +24,36 @@ public final class TicketManagement {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_HelloResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Empty_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Empty_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TicketList_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TicketList_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TicketRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TicketRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TicketResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TicketResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AutoNewTicketRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AutoNewTicketRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TicketId_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TicketId_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -35,9 +65,28 @@ public final class TicketManagement {
     java.lang.String[] descriptorData = {
       "\n\026ticketManagement.proto\"\035\n\014HelloRequest" +
       "\022\r\n\005hello\030\001 \001(\t\"\035\n\rHelloResponse\022\014\n\004ciao" +
-      "\030\001 \001(\t28\n\014HelloService\022(\n\005Hello\022\r.HelloR" +
-      "equest\032\016.HelloResponse\"\000B.\n\022de.uniba.rz." +
-      "io.rpcB\020TicketManagementP\001\242\002\003RTGb\006proto3"
+      "\030\001 \001(\t\"\007\n\005Empty\" \n\nTicketList\022\022\n\nallTick" +
+      "ets\030\001 \001(\014\"u\n\rTicketRequest\022\020\n\010reporter\030\001" +
+      " \001(\t\022\r\n\005topic\030\002 \001(\t\022\023\n\013description\030\003 \001(\t" +
+      "\022\014\n\004type\030\004 \001(\t\022\020\n\010priority\030\005 \001(\t\022\016\n\006stat" +
+      "us\030\006 \001(\t\"\210\001\n\016TicketResponse\022\020\n\010ticketId\030" +
+      "\001 \001(\005\022\020\n\010reporter\030\002 \001(\t\022\r\n\005topic\030\003 \001(\t\022\023" +
+      "\n\013description\030\004 \001(\t\022\014\n\004type\030\005 \001(\t\022\020\n\010pri" +
+      "ority\030\006 \001(\t\022\016\n\006status\030\007 \001(\t\"(\n\024AutoNewTi" +
+      "cketRequest\022\020\n\010ticketId\030\001 \001(\005\"\034\n\010TicketI" +
+      "d\022\020\n\010ticketId\030\001 \001(\00528\n\014HelloService\022(\n\005H" +
+      "ello\022\r.HelloRequest\032\016.HelloResponse\"\0002\337\002" +
+      "\n\rTicketService\0221\n\014createTicket\022\016.Ticket" +
+      "Request\032\017.TicketResponse\"\000\022&\n\rgetAllTick" +
+      "ets\022\006.Empty\032\013.TicketList\"\000\022-\n\rgetTicketB" +
+      "yId\022\t.TicketId\032\017.TicketResponse\"\000\022,\n\014acc" +
+      "eptTicket\022\t.TicketId\032\017.TicketResponse\"\000\022" +
+      ",\n\014rejectTicket\022\t.TicketId\032\017.TicketRespo" +
+      "nse\"\000\022+\n\013closeTicket\022\t.TicketId\032\017.Ticket" +
+      "Response\"\000\022;\n\017StreamNewTicket\022\025.AutoNewT" +
+      "icketRequest\032\013.TicketList\"\000(\0010\001B.\n\022de.un" +
+      "iba.rz.io.rpcB\020TicketManagementP\001\242\002\003RTGb" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -63,6 +112,42 @@ public final class TicketManagement {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_HelloResponse_descriptor,
         new java.lang.String[] { "Ciao", });
+    internal_static_Empty_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_Empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Empty_descriptor,
+        new java.lang.String[] { });
+    internal_static_TicketList_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_TicketList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TicketList_descriptor,
+        new java.lang.String[] { "AllTickets", });
+    internal_static_TicketRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_TicketRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TicketRequest_descriptor,
+        new java.lang.String[] { "Reporter", "Topic", "Description", "Type", "Priority", "Status", });
+    internal_static_TicketResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_TicketResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TicketResponse_descriptor,
+        new java.lang.String[] { "TicketId", "Reporter", "Topic", "Description", "Type", "Priority", "Status", });
+    internal_static_AutoNewTicketRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_AutoNewTicketRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AutoNewTicketRequest_descriptor,
+        new java.lang.String[] { "TicketId", });
+    internal_static_TicketId_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_TicketId_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TicketId_descriptor,
+        new java.lang.String[] { "TicketId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

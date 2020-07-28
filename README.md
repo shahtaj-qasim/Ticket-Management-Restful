@@ -1,4 +1,4 @@
-# Ticket Management System Using Rest API
+# Introduction to Distributed Systems - Assignment Template
 
 ## General Information
 
@@ -31,3 +31,7 @@ Look at the dependencies block in the server/build.gradle.
 
 The _shared_ project is automatically included in the dependencies of the client and server.
 If you are interested inspect the `idistrsys/build.gradle` to see all the relevant settings, configurations and tasks.
+
+### Note:
+1. For running GRPC on client and server, go to Run -> Edit Configurations, pass argument "grpc localhost 80" for client. And pass argument "grpc localhost 80" for server
+2. For running REST on client and server, go to Run -> Edit Configurations, pass argument "rest" for client. And pass argument "rest" for server
