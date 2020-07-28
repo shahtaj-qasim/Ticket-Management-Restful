@@ -1,4 +1,4 @@
-# Introduction to Distributed Systems - Assignment Template
+# Ticket Management System using REST API
 
 ## General Information
 
@@ -35,3 +35,4 @@ If you are interested inspect the `idistrsys/build.gradle` to see all the releva
 ### Note:
 1. For running GRPC on client and server, go to Run -> Edit Configurations, pass argument "grpc localhost 80" for client. And pass argument "grpc localhost 80" for server
 2. For running REST on client and server, go to Run -> Edit Configurations, pass argument "rest" for client. And pass argument "rest" for server
+3. While searching, do write page number and number of tickets, these are mandatory fields for search
